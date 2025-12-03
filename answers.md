@@ -17,7 +17,7 @@ new bound on the work? Your bound will be a function of
 $|V|$, $|E|$, and $d$ and will account for the `delete-min` and
 `insert` operations separately.
 
-From the maximum depth, we have $\log_d(nd-n+1)-1 = O(log_d(|V|))$. Delete min will run once for each vertice and insert will run once for each edge. Therefore, the total work can be modeled as $|V|O(d*h)+|E|O(h)$. Expanding our definition of O(h), we have $O(|E|\log_d(|V|)+d|V|\log_d|(V|)$
+From the maximum depth, we have $\log_d(nd-n+1)-1 = O(log_d(|V|))$. Delete min will run once for each vertice and insert will run once for each edge. Therefore, the total work can be modeled as $|V|O(d*h)+|E|O(h)$. Expanding our definition of O(h), we have $O(|E|\log_d(|V|)+d|V|\log_d(|V|))=O(\log_d(|V|)(|E|+d|V|))$
 
 
 d) Now that we have a characterization of how Dijkstra's algorithm
@@ -26,8 +26,7 @@ optimize the choice of $d$ under certain assumptions. Let's suppose
 that we have a moderate number of edges, that is  $|E| = |V|^{1+\epsilon}$ for $0<\epsilon
 < 1$. What value of $d$ yields an overall running time of $O(|E|)$?
 
-Choose $d=|V|^{\epsilon$}. Then, $|E| = |V|^{1+\epsilon}$. Substituting $|E|$, we have O(|E|\log_d(|V|)+d|V|\log_d|(V|)$
-
+Given $|E| = |V|^{1+\epsilon}$, we have $O(\log_d(|V|)(|V|^{1+\epsilon}|V|))$. Note $\log_d(V)=\frac{\log V}{\log d}$, therefore O(\frac{\log V}{\log d}(|V|^{1+\epsilon}|V|)). Next, we factor out  $|V|^{1+\epsilon}$ to isolate |E|: $ O(\frac{\log V}{\log d}(V|^{1+\epsilon}|V|))$
 
 
 **put in answers.md**
