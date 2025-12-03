@@ -5,42 +5,6 @@
 
 
 
-
-
-
-
-
-
-
-c) Now, suppose we use a $d$-ary heap for Dijkstra's algorithm. What is the
-new bound on the work? Your bound will be a function of
-$|V|$, $|E|$, and $d$ and will account for the `delete-min` and
-`insert` operations separately.
-
-From the maximum depth, we have $\log_d(nd-n+1)-1 = O(log_d(|V|))$. Delete min will run once for each vertice and insert will run once for each edge. Therefore, the total work can be modeled as $|V|O(d*h)+|E|O(h)$. Expanding our definition of O(h), we have $O(|E|\log_d(|V|)+d|V|\log_d(|V|))=O(\log_d(|V|)(|E|+d|V|))$
-
-
-d) Now that we have a characterization of how Dijkstra's algorithm
-performs with a $d$-ary heap, let's look at how we might be able to
-optimize the choice of $d$ under certain assumptions. Let's suppose
-that we have a moderate number of edges, that is  $|E| = |V|^{1+\epsilon}$ for $0<\epsilon
-< 1$. What value of $d$ yields an overall running time of $O(|E|)$?
-
-Given $|E| = |V|^{1+\epsilon}$, we have $O(\log_d(|V|)(|V|^{1+\epsilon}|V|))$. Note $\log_d(V)=\frac{\log V}{\log d}$, therefore O(\frac{\log V}{\log d}(|V|^{1+\epsilon}|V|)). Next, we factor out  $|V|^{1+\epsilon}$ to isolate |E|: $ O(\frac{\log V}{\log d}(V|^{1+\epsilon}|V|))$
-
-
-**put in answers.md**
-
-.  
-.  
-.  
-
-
-
-
-
-
-
 - **1a.**
 Given a d ary tree with n nodes and the root at the 0th level, we know that if the ith level is complete it will have $d^i$ nodes. Suppose k is the last completely filled level in the heap, then we have the total number of levels as $\sum_{i=0}^{k}d^i= \frac{d^{k+1}-1}{d-1}$. There are two possibilities; the final node is either on level k or it is on an incomplete k+1 level. This yields $\frac{d^{k+1}-1}{d-1} \leq n < \frac{d^{k+2}-1}{d-1}$. Taking log of both sides and simplifying, we have $k \leq \log_d(n(d-1)+1)-1<k+1$.So the maximum depth is $ \log_d(nd-n+1)-1$
 
@@ -53,9 +17,11 @@ For the delete min, we have to find the minimum child and swap with its parent. 
 
 
 - **1c.**
-- From the maximum depth, we have $\log_d(nd-n+1)-1 = O(log_d(|V|))$. Delete min will run once for each vertice and insert will run once for each edge. Therefore, the total work can be modeled as $|V|O(d*h)+|E|O(h)$. Expanding our definition of O(h), we have $O(|E|\log_d(|V|)+d|V|\log_d|(V|)$
+From the maximum depth, we have $\log_d(nd-n+1)-1 = O(log_d(|V|))$. Delete min will run once for each vertice and insert will run once for each edge. Therefore, the total work can be modeled as $|V|O(d*h)+|E|O(h)$. Expanding our definition of O(h), we have $O(|E|\log_d(|V|)+d|V|\log_d(|V|))=O(\log_d(|V|)(|E|+d|V|))$
+
 
 - **1d.**
+ Given $|E| = |V|^{1+\epsilon}$, we have $O(\log_d(|V|)(|V|^{1+\epsilon}+d|V|))$. Note $ \log_d(V)=\frac{\log V}{\log d}$, therefore $O(\frac{\log V}{\log d}(|V|^{1+\epsilon}+d|V|))$. Next, we factor out  $|V|^{1+\epsilon}$ to isolate |E|: $ O(\frac{\log V}{\log d} |V|^{1+\epsilon}(1+d|V|^{-\epsilon}) =  O(\frac{\log V}{\log d} |E|(1+d|V|^{-\epsilon})$. Therefore, for O(|E|) we want to choose d such that \frac{\log V}{\log d}*(1+d|V|^{-\epsilon}= O(1). Choosing $d=|V|^{epsilon}$ will satisfy this equation, as $\frac{\log V}{\log V^{epsilon}}=\frac{1}{\epsilon}}, which is O(1) and $1+|V^{\epsilon}V^{-\epsilon}=1+V^0=1+1=2$, which is also O(1). Therefore the terms multiplied give O(1), which gives the desired result that the bound will be O(E).
 
 
 - **2a.**
