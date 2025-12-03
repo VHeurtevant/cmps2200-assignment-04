@@ -1,7 +1,65 @@
 # CMPS 2200 Assignment 4
 ## Answers
 
-**Name:**_________________________
+**Name:** Viv Heurtevant
+
+
+## 1. Improving Dijkstra
+
+In our analysis of the work done by Dijkstra's algorithm, we ended up
+with a bound of $O(|E|\log |E|)$. Let's take a closer look at how
+changing the type of heap used affects this work bound.
+
+
+Given a d ary tree with n nodes and the root at the 0th level, we know that if the ith level is complete it will have $d^i$ nodes. Suppose k is the last completely filled level in the heap, then we have the total number of levels as $\sum_{i=0}^{k}d^i= \frac{d^{k+1}-1}{d-1}$. There are two possibilities; the final node is either on level k or it is on an incomplete k+1 level. This yields $\frac{d^{k+1}-1}{d-1} \leq n < \frac{d^{k+2}-1}{d-1}$. Taking log of both sides and simplifying, we have $k \leq \log_d(n(d-1)+1)-1<k+1$.So the maximum depth is $ log_d(nd-n+1)-1$
+
+
+
+
+b) In a binary heap the `delete-min` operation removes the root,
+places the rightmost leaf at the root position and restores the heap
+property by swapping downward. Similarly the `insert` operation places
+the new element as the rightmost leaf and swaps upward to restore the
+heap property. What is the work done by
+`delete-min` and `insert` operations in a $d$-ary heap? Note that the
+work differs for each operation. 
+
+
+**put in answers.md**
+
+.  
+.  
+.  
+
+
+
+c) Now, suppose we use a $d$-ary heap for Dijkstra's algorithm. What is the
+new bound on the work? Your bound will be a function of
+$|V|$, $|E|$, and $d$ and will account for the `delete-min` and
+`insert` operations separately.
+
+
+**put in answers.md**
+
+.  
+.  
+.  
+
+
+
+d) Now that we have a characterization of how Dijkstra's algorithm
+performs with a $d$-ary heap, let's look at how we might be able to
+optimize the choice of $d$ under certain assumptions. Let's suppose
+that we have a moderate number of edges, that is  $|E| = |V|^{1+\epsilon}$ for $0<\epsilon
+< 1$. What value of $d$ yields an overall running time of $O(|E|)$?
+
+
+**put in answers.md**
+
+.  
+.  
+.  
+
 
 
 
