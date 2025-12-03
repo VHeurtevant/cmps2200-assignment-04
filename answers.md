@@ -65,19 +65,36 @@ For k=2, there are no improvement:
 
 - **2b.**
 
+  Interestingly, the relationship between ASPS(i,j,1) and ASPS(i,j,2) is the same which means that no shortests paths use 2 as an intermediate, so we can say that ASPS(i,j,2) = ASPS(i,j,1) for all i,j.
+  If there was some node that did use 2 as an intermediate for the shortest path then we can write it as the sum of two k=1 subpaths ASPS(i,2,1) and ASPS(2,j,1).
+
 
 - **2c.**
+From the above problem, we see there are two possibilities for ASPS(i,j,k), where the optimal path either does or does not use k.
 
+The first option, if the path does not contain vertice k in the optimal will just be ASPS(i,j,k-1). The second option builds two subpaths of k-1 from i,k and then k,j: ASPS(i,k,k-1) + ASPS(k,j,k-1).
+
+So for the optimal substructure, we simply choose the minimum of these two: Min(ASPS(i,j,k-1), ASPS(i,k,k-1)+ASPS(k,j,k-1)
 - **2d.**
+
+Because we are using an undirected graph, the adjacency matrix will be symmetric- meaning we can store the value of each (i,j) to compute (j,i). This will reduce the amount of subproblems by roughly half. We will have n diagonals, and $\frac{n(n-1)}{2}$ non diagonals,so the total amount of suproblems will be $n + \frac{n(n-1)}{2}=\frac{n^2+n}{2}$. Next, we must compute these subproblems for each value of k from 0,1,2...n-1 , so this will happen n times. We multiply this by the number of subproblem to get the result: $O(\frac{n^3+n^2}{2})$, or more simply $O(n^3)$.
 
 - **2e.**
 
-
+From notes, we know that Johnson algorithm has work $O(nm+n^2 \log n)$. Which algorithm is dependent on the sparsity of the graph. The denser the graph, the larger m will be so when the graph is dense, $n^2 ~ m$ so Johnson will be roughly $O(n^3+n^2 \log n)$ which will be slightly worse than our algorithm. If the graph is sparse though, m will be small and Johnson algorithm will be more efficient.
 
 - **3a.**
+No, it is not neccesarily true as MST minimizes sum of all edgeweights, while MMET only wants to minimize the maximum single edge weight. For a counter example, consider a graph with vertices A,B,C,D with edges:
+A-B = 1
+B-C = 1
+C-D = 10
+A-D = 5
+B-D = 6
 
+Our MST would choose A-B + B-C+ C-D, which has a minimum sum of 12. However, this would fail the MMET as it uses the heaviest edge C-D. The MMET would instead pick A-B+B-C+A-D, where the maximum edge is minimized to 5.
 
 - **3b.**
-
+  Let the original MST be T. To find the next best MST, we can remove any given edge and find a replacement candidate with a new edge/path . We then choose the minimum weight edge to replace, when doing this we should consider subtracting our new weight from original edge's weight to compare the increase in cost. (For example, replacing a smaller edge will be more costly than replacing a larger edge) 
 
 - **3c.**
+The worst case is that the MST is V-1 edges long. We have to compare for each edge, so the total work will be around O(EV). It is possible this can be improved by checking edges in parallel.
