@@ -28,11 +28,12 @@ Given $|E| = |V|^{1+\epsilon}$, we have $O(\log_d(|V|)(|V|^{1+\epsilon}+d|V|))$.
 
 - **2a.**
 First we initialize the graph by only considering direct edges:
-|   | 0  | 1  | 2  |
-|---|---|---|---|
-| 0 | 0 | -2 | 2 |
-| 1 | -2 | 0 | 1 |
-| 2 | 2  | 1 | 0 |
+
+| i\j | 0  | 1  | 2 |
+| --- | -- | -- | - |
+| 0   | 0  | -2 | 2 |
+| 1   | -2 | 0  | 1 |
+| 2   | 2  | 1  | 0 |
 
 
 - **2b.**
