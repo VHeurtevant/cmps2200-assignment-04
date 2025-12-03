@@ -23,7 +23,7 @@ From the maximum depth, we have $\log_d(nd-n+1)-1 = O(log_d(|V|))$. Delete min w
 - **1d.**
 Choose $d=|V|^{\epsilon}$.
 
-Given $|E| = |V|^{1+\epsilon}$, we have $O(\log_d(|V|)(|V|^{1+\epsilon}+d|V|))$. Note $\log_d(V) =\frac{\log V}{\log d}$, therefore $O(\frac{\log V}{\log d}(|V|^{1+\epsilon}+d|V|))$. Next, we factor out  $|V|^{1+\epsilon}$ to isolate |E|: $O(\frac{\log V}{\log d} |V|^{1+\epsilon}(1+d|V|^{-\epsilon}) =  O(\frac{\log V}{\log d} |E|(1+d|V|^{-\epsilon})$. Therefore, for O(|E|) we want to choose d such that $\frac{\log V}{\log d}*(1+d|V|^{-\epsilon}= O(1)$. Choosing $d=|V|^{\epsilon}$ will satisfy this equation, as $\frac{\log V}{\log V^{\epsilon}}=\frac{1}{\epsilon}}$, which is O(1) and $1+|V^{\epsilon}V^{- \epsilon}=1+V^0=1+1=2$, which is also O(1). Therefore the terms multiplied give O(1), which gives the desired result that the bound will be O(E).
+Given $|E| = |V|^{1+\epsilon}$, we have $O(\log_d(|V|)(|V|^{1+\epsilon}+d|V|))$. Note $\log_d(V) =\frac{\log V}{\log d}$, therefore $O(\frac{\log V}{\log d}(|V|^{1+\epsilon}+d|V|))$. Next, we factor out  $|V|^{1+\epsilon}$ to isolate |E|: $O(\frac{\log V}{\log d} |V|^{1+\epsilon}(1+d|V|^{-\epsilon}) =  O(\frac{\log V}{\log d} |E|(1+d|V|^{-\epsilon})$. Therefore, for O(|E|) we want to choose d such that $\frac{\log V}{\log d}*(1+d|V|^{-\epsilon}= O(1)$. Choosing $d=|V|^{\epsilon}$ will satisfy this equation, as $\frac{\log V}{\log V^{\epsilon}}=\frac{1}{\epsilon}$, which is O(1) and $1+|V^{\epsilon}V^{- \epsilon}=1+V^0=1+1=2$, which is also O(1). Therefore the terms multiplied give O(1), which gives the desired result that the bound will be O(E).
 
 
 - **2a.**
