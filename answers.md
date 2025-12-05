@@ -36,31 +36,30 @@ First we initialize the graph by only considering direct edges:
 | 2   | 2  | 1  | 0 |
 
 
-Next, for k=0 we update dist(1,2) as it gives path length of 0 which is less than the 1 length. We also find that dist(1,1) can be reduced to -4 by taking advantage of the negative vertice between 0 and 1. We see that we have a negative cycle from this.
+Next, for k=0 we update dist(1,2) as it gives path length of 0 which is less than the 1 length. 
 
 | i\j | 0  | 1  | 2 |
 | --- | -- | -- | - |
 | 0   | 0  | -2 | 2 |
-| 1   | -2 | -4 | 0 |
+| 1   | -2 | 0 | 0 |
 | 2   | 2  | 0  | 0 |
 
 
-For k=1 we have improvements across most nodes- notably all except for (2,2) decrease by 4 in length . Note we only can traverse an intermediate vertex once.
+For k=1 we have improvements across most nodes . Note we only can traverse an intermediate vertex once.
 
 | i\j | 0  | 1  | 2  |
 | --- | -- | -- | -- |
-| 0   | -4 | -6 | -2 |
-| 1   | -6 | -8 | -4 |
-| 2   | -2 | -4 | 0  |
+| 0   | 0 | -2 | -1 |
+| 1   | -2 | 0 | 0  |
+| 2   | -1 | 0 | 0  |
 
 For k=2, there are no improvement:
 
 | i\j | 0  | 1  | 2  |
 | --- | -- | -- | -- |
-| 0   | -4 | -6 | -2 |
-| 1   | -6 | -8 | -4 |
-| 2   | -2 | -4 | 0  |
-
+| 0   | 0 | -2 | -1 |
+| 1   | -2 | 0 | 0  |
+| 2   | -1 | 0 | 0  |
 
 
 - **2b.**
